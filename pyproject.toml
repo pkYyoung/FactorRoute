@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "factorroute"
+version = "0.1.0"
+description = "FactorRoute multi-factor research toolkit"
+requires-python = ">=3.10,<3.13"
+dependencies = ["numpy==2.2.6", "pandas==2.3.0", "scipy==1.15.3", "matplotlib==3.10.3"]
+
+[project.optional-dependencies]
+excel = ["openpyxl", "xlrd"]
+
+[project.scripts]
+factorroute = "factorcode.research_engine:main"
+
+[tool.setuptools.packages.find]
+include = ["factorcode*"]
+
+[tool.setuptools.package-data]
+factorcode = ["configs/phases/*.json"]
