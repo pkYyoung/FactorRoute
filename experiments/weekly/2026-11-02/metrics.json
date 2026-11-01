@@ -1,0 +1,173 @@
+{
+  "signal_date": "2026-10-30",
+  "valuation_end": "2026-10-30",
+  "metrics": {
+    "strategy": {
+      "final_nav": 2.787713418802847,
+      "total_return": 1.7877134188028356,
+      "annualized_return_252": 0.45975159018585043,
+      "annualized_volatility": 0.27218869272606305,
+      "sharpe_rf0": 1.5266498279395857,
+      "max_drawdown": -0.235361884897481,
+      "calmar": 1.9533816632464054,
+      "daily_win_rate": 0.5431918008784773,
+      "trading_days": 683,
+      "drawdown_peak": "2025-02-18",
+      "drawdown_trough": "2025-04-08",
+      "drawdown_recovered": "2025-10-01"
+    },
+    "before_cost": {
+      "final_nav": 2.9732330806754517,
+      "total_return": 1.9732330806754685,
+      "annualized_return_252": 0.4948677664882215,
+      "annualized_volatility": 0.27236944897101806,
+      "sharpe_rf0": 1.6132180454407878,
+      "max_drawdown": -0.23295452646219716,
+      "calmar": 2.1243105854331894,
+      "daily_win_rate": 0.5446559297218155,
+      "trading_days": 683,
+      "drawdown_peak": "2025-02-18",
+      "drawdown_trough": "2025-04-08",
+      "drawdown_recovered": "2025-09-22"
+    },
+    "SPY": {
+      "final_nav": 1.5557018954276014,
+      "total_return": 0.5557018954276127,
+      "annualized_return_252": 0.17709969561290806,
+      "annualized_volatility": 0.15596135343841558,
+      "sharpe_rf0": 1.1232139549627564,
+      "max_drawdown": -0.18755225912218954,
+      "calmar": 0.9442685278321725,
+      "daily_win_rate": 0.5578330893118595,
+      "trading_days": 683,
+      "drawdown_peak": "2025-02-19",
+      "drawdown_trough": "2025-04-08",
+      "drawdown_recovered": "2025-06-26"
+    }
+  },
+  "rebalance_count": 142,
+  "execution_status": "historical simulation only; no orders; latest signal may be pending first entry",
+  "calendar_check": "XNYS verified",
+  "sector_weights": {
+    "Energy": 0.4,
+    "Health Care": 0.2,
+    "Information Technology": 0.2,
+    "Consumer Staples": 0.1,
+    "Industrials": 0.1
+  },
+  "mean_beta_proxy": 0.40475298061791226,
+  "boundary_tie_count": 1,
+  "software": {
+    "python": "3.12.11",
+    "pandas": "2.3.0",
+    "numpy": "2.2.6"
+  },
+  "limitations": [
+    "Current constituents retrospectively: survivorship and membership lookahead bias",
+    "Adjusted-price total-return approximation, fractional shares and assumed full execution",
+    "No precise dividend cash, FX, tax, lot-size, halt or order-execution ledger",
+    "No sector cap; earnings events not part of selection exclusion",
+    "2026 review previously inspected; not pristine out-of-sample; historical drawdown is not a loss limit"
+  ],
+  "strategy": {
+    "weights": {
+      "RSTR": 0.7,
+      "DASTD": 0.3
+    },
+    "directions": {
+      "RSTR": 1,
+      "DASTD": -1
+    },
+    "score_method": "zscore",
+    "holdings": 10,
+    "cost_rate": 0.001
+  },
+  "train": {
+    "strategy": {
+      "final_nav": 1.869625336916902,
+      "total_return": 0.8696253369168965,
+      "annualized_return_252": 0.3946881826740767,
+      "annualized_volatility": 0.2732000516093321,
+      "sharpe_rf0": 1.3548225417701436,
+      "max_drawdown": -0.235361884897481,
+      "calmar": 1.6769417989917743,
+      "daily_win_rate": 0.540084388185654,
+      "trading_days": 474,
+      "drawdown_peak": "2025-02-18",
+      "drawdown_trough": "2025-04-08",
+      "drawdown_recovered": "2025-10-01"
+    },
+    "before_cost": {
+      "final_nav": 1.9533132357315472,
+      "total_return": 0.953313235731551,
+      "annualized_return_252": 0.4275377072857005,
+      "annualized_volatility": 0.273268069930604,
+      "sharpe_rf0": 1.4398499509417382,
+      "max_drawdown": -0.23295452646219716,
+      "calmar": 1.8352839662683242,
+      "daily_win_rate": 0.540084388185654,
+      "trading_days": 474,
+      "drawdown_peak": "2025-02-18",
+      "drawdown_trough": "2025-04-08",
+      "drawdown_recovered": "2025-09-22"
+    },
+    "SPY": {
+      "final_nav": 1.3929000264815996,
+      "total_return": 0.3929000264816078,
+      "annualized_return_252": 0.19265381581809415,
+      "annualized_volatility": 0.16631958475147743,
+      "sharpe_rf0": 1.1420298514180824,
+      "max_drawdown": -0.18755225912218954,
+      "calmar": 1.0272007211205116,
+      "daily_win_rate": 0.5780590717299579,
+      "trading_days": 474,
+      "drawdown_peak": "2025-02-19",
+      "drawdown_trough": "2025-04-08",
+      "drawdown_recovered": "2025-06-26"
+    }
+  },
+  "review": {
+    "strategy": {
+      "final_nav": 1.491054578560598,
+      "total_return": 0.4910545785606004,
+      "annualized_return_252": 0.6187820645989379,
+      "annualized_volatility": 0.27042122354391834,
+      "sharpe_rf0": 1.9173778853926635,
+      "max_drawdown": -0.11904162892136216,
+      "calmar": 5.198030892266266,
+      "daily_win_rate": 0.5502392344497608,
+      "trading_days": 209,
+      "drawdown_peak": "2026-03-02",
+      "drawdown_trough": "2026-03-30",
+      "drawdown_recovered": "2026-04-09"
+    },
+    "before_cost": {
+      "final_nav": 1.5221486376515172,
+      "total_return": 0.5221486376515172,
+      "annualized_return_252": 0.659571913871775,
+      "annualized_volatility": 0.2708586981093539,
+      "sharpe_rf0": 2.0067640786925347,
+      "max_drawdown": -0.11767202470881954,
+      "calmar": 5.605171794263688,
+      "daily_win_rate": 0.5550239234449761,
+      "trading_days": 209,
+      "drawdown_peak": "2026-03-02",
+      "drawdown_trough": "2026-03-30",
+      "drawdown_recovered": "2026-04-09"
+    },
+    "SPY": {
+      "final_nav": 1.116879794565897,
+      "total_return": 0.11687979456589614,
+      "annualized_return_252": 0.1425714188074909,
+      "annualized_volatility": 0.12978101326852845,
+      "sharpe_rf0": 1.091794144786493,
+      "max_drawdown": -0.0888496492533778,
+      "calmar": 1.6046368219295,
+      "daily_win_rate": 0.5119617224880383,
+      "trading_days": 209,
+      "drawdown_peak": "2026-01-27",
+      "drawdown_trough": "2026-03-30",
+      "drawdown_recovered": "2026-04-14"
+    }
+  }
+}

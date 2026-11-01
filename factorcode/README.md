@@ -19,6 +19,8 @@ FactorRoute 的因子计算与分析包。安装、运行、数据格式和输�
 
 ## 候选因子
 
+新增周频研究模块：`data/yfinance_source.py`负责下载与质量检查；`strategy/weekly.py`负责原因子调用及组合评分；`analysis/portfolio.py`负责简化持仓模拟；`weekly_config.py`及`weekly_workflow.py`负责周配置、阶段及公开导出。团队使用根目录`scripts/run_weekly.py`，每周参数在`experiments/weekly/`。这些模块不改变下表的原因子公式。
+
 | 简称 | 风格 | 类名 |
 |---|---|---|
 | SIZE | 规模 | SizeFactor |

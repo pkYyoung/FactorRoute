@@ -1,0 +1,11 @@
+date,code,company,sector,score,rank,target_weight
+2026-10-30,PSX,Phillips 66,Energy,1.6762566542170958,1,0.1
+2026-10-30,MPC,Marathon Petroleum,Energy,1.5719367887879396,2,0.1
+2026-10-30,VLO,Valero Energy,Energy,1.5041959515856138,3,0.1
+2026-10-30,RVTY,Revvity,Health Care,1.3753908644456945,4,0.1
+2026-10-30,NTAP,NetApp,Information Technology,1.283968161094073,5,0.1
+2026-10-30,APA,APA Corporation,Energy,1.2269269028054697,6,0.1
+2026-10-30,CRL,Charles River Laboratories,Health Care,1.218112384426094,7,0.1
+2026-10-30,TGT,Target Corporation,Consumer Staples,1.1743981131416374,8,0.1
+2026-10-30,EXPD,Expeditors International,Industrials,1.1452889049395292,9,0.1
+2026-10-30,KEYS,Keysight Technologies,Information Technology,1.1096380833616477,10,0.1
