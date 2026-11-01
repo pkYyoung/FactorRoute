@@ -11,6 +11,7 @@ dependencies = ["numpy==2.2.6", "pandas==2.3.0", "scipy==1.15.3", "matplotlib==3
 
 [project.optional-dependencies]
 excel = ["openpyxl", "xlrd"]
+yfinance = ["yfinance==1.7.0", "exchange-calendars==4.13.2"]
 
 [project.scripts]
 factorroute = "factorcode.research_engine:main"

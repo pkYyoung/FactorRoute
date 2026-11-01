@@ -1,4 +1,7 @@
 .venv/
+/.venv-*/
+/data/yfinance/
+/data/algoseek/
 __pycache__/
 *.py[cod]
 .pytest_cache/
@@ -11,5 +14,11 @@ build/
 dist/
 /data/raw/*
 !/data/raw/.gitkeep
+/data/databento/raw/*
+!/data/databento/raw/.gitkeep
+/data/databento/processed/*
+!/data/databento/processed/.gitkeep
+/data/databento/metadata/*
+!/data/databento/metadata/.gitkeep
 /outputs/*
 !/outputs/.gitkeep

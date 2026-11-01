@@ -1,0 +1,41 @@
+{
+  "week": "2026-11-02",
+  "signal_date": "2026-10-30",
+  "reported_on": "2026-11-01",
+  "snapshot": "data/yfinance/sp500_20261101T051000095467Z",
+  "download_start": "2023-01-01",
+  "download_end_exclusive": "2026-10-31",
+  "analysis_start": "2024-01-01",
+  "benchmark": "SPY",
+  "universe": "sp500_current_snapshot",
+  "universe_url": "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies",
+  "weights": {
+    "RSTR": 0.7,
+    "DASTD": 0.3
+  },
+  "directions": {
+    "RSTR": 1,
+    "DASTD": -1
+  },
+  "score_method": "zscore",
+  "holdings": 10,
+  "min_eligible": 100,
+  "adv_window": 20,
+  "adv_min_usd": 10000000,
+  "cost_rate": 0.001,
+  "train_start": "2024-01-01",
+  "train_end": "2025-12-31",
+  "review_start": "2026-01-01",
+  "review_end": "2026-10-30",
+  "momentum_grid": [
+    0,
+    0.25,
+    0.5,
+    0.7,
+    0.75,
+    1
+  ],
+  "train_drawdown_screen": 0.25,
+  "review_previously_inspected": true,
+  "historical_membership": false
+}
