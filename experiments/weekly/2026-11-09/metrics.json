@@ -1,0 +1,92 @@
+{
+  "G0": {
+    "gross_return": -0.061504490031229486,
+    "net_return": -0.06244204798324615,
+    "max_close_drawdown_gross": -0.061504490031229486,
+    "max_close_drawdown_net": -0.06244204798324615,
+    "up_stocks": 1,
+    "stocks": 10,
+    "excess_spy_gross": -0.07119569449928098,
+    "improvement_g0_gross": 0.0
+  },
+  "G1": {
+    "gross_return": -0.04377169779950818,
+    "net_return": -0.04472697082867938,
+    "max_close_drawdown_gross": -0.04377169779950818,
+    "max_close_drawdown_net": -0.04472697082867938,
+    "up_stocks": 3,
+    "stocks": 15,
+    "excess_spy_gross": -0.053462902267559675,
+    "improvement_g0_gross": 0.017732792231721306
+  },
+  "G2": {
+    "gross_return": -0.005971800541169081,
+    "net_return": -0.006964835705463468,
+    "max_close_drawdown_gross": -0.02261966970758511,
+    "max_close_drawdown_net": -0.023596073633950998,
+    "up_stocks": 6,
+    "stocks": 10,
+    "excess_spy_gross": -0.015663005009220576,
+    "improvement_g0_gross": 0.055532689490060405
+  },
+  "G3": {
+    "gross_return": -0.008459309047946784,
+    "net_return": -0.009449859188757959,
+    "max_close_drawdown_gross": -0.01734126531047464,
+    "max_close_drawdown_net": -0.018322942368106387,
+    "up_stocks": 10,
+    "stocks": 15,
+    "excess_spy_gross": -0.01815051351599828,
+    "improvement_g0_gross": 0.0530451809832827
+  },
+  "G4": {
+    "gross_return": -0.053200751577954675,
+    "net_return": -0.05414660497298163,
+    "max_close_drawdown_gross": -0.053200751577954675,
+    "max_close_drawdown_net": -0.05414660497298163,
+    "up_stocks": 1,
+    "stocks": 10,
+    "excess_spy_gross": -0.06289195604600617,
+    "improvement_g0_gross": 0.008303738453274812
+  },
+  "G5": {
+    "gross_return": -0.049988429601022455,
+    "net_return": -0.05093749210891341,
+    "max_close_drawdown_gross": -0.049988429601022455,
+    "max_close_drawdown_net": -0.05093749210891341,
+    "up_stocks": 2,
+    "stocks": 15,
+    "excess_spy_gross": -0.05967963406907395,
+    "improvement_g0_gross": 0.011516060430207031
+  },
+  "G6": {
+    "gross_return": -0.008141733869587497,
+    "net_return": -0.009132601268319052,
+    "max_close_drawdown_gross": -0.013651934896027007,
+    "max_close_drawdown_net": -0.014637297598428467,
+    "up_stocks": 7,
+    "stocks": 10,
+    "excess_spy_gross": -0.017832938337638993,
+    "improvement_g0_gross": 0.05336275616164199
+  },
+  "G7": {
+    "gross_return": -0.0070523645995627104,
+    "net_return": -0.008044320279283368,
+    "max_close_drawdown_gross": -0.013566745468530095,
+    "max_close_drawdown_net": -0.013960110403073989,
+    "up_stocks": 10,
+    "stocks": 15,
+    "excess_spy_gross": -0.016743569067614206,
+    "improvement_g0_gross": 0.054452125431666776
+  },
+  "SPY": {
+    "gross_return": 0.009691204468051495,
+    "net_return": 0.008682521946105526,
+    "max_close_drawdown_gross": -0.009678104553233036,
+    "max_close_drawdown_net": -0.01066743711611684,
+    "up_stocks": 1,
+    "stocks": 1,
+    "excess_spy_gross": 0.0,
+    "improvement_g0_gross": 0.07119569449928098
+  }
+}

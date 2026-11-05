@@ -1,0 +1,77 @@
+{
+  "signal_date": "2026-10-30",
+  "entry_date": "2026-11-02",
+  "valuation_dates": [
+    "2026-11-02",
+    "2026-11-03",
+    "2026-11-04"
+  ],
+  "download_start": "2026-10-30",
+  "download_end_exclusive": "2026-11-05",
+  "cost": 0.001,
+  "recent_window": 21,
+  "medium_window": 63,
+  "old_weights": [
+    0.7,
+    -0.3
+  ],
+  "new_weights": [
+    0.4,
+    0.3,
+    -0.3
+  ],
+  "rankings": "outputs/weekly/2026-11-02/20261101T055841803601Z/weekly_rankings.csv",
+  "baseline": "experiments/weekly/2026-11-02/selected.csv",
+  "snapshot": "data/yfinance/sp500_20261101T051000095467Z",
+  "output_root": "outputs/weekly/2026-11-09",
+  "groups": [
+    {
+      "id": "G0",
+      "strategy": "old",
+      "n": 10,
+      "cap": null
+    },
+    {
+      "id": "G1",
+      "strategy": "old",
+      "n": 15,
+      "cap": null
+    },
+    {
+      "id": "G2",
+      "strategy": "new",
+      "n": 10,
+      "cap": null
+    },
+    {
+      "id": "G3",
+      "strategy": "new",
+      "n": 15,
+      "cap": null
+    },
+    {
+      "id": "G4",
+      "strategy": "old",
+      "n": 10,
+      "cap": 0.3
+    },
+    {
+      "id": "G5",
+      "strategy": "old",
+      "n": 15,
+      "cap": 0.3
+    },
+    {
+      "id": "G6",
+      "strategy": "new",
+      "n": 10,
+      "cap": 0.3
+    },
+    {
+      "id": "G7",
+      "strategy": "new",
+      "n": 15,
+      "cap": 0.3
+    }
+  ]
+}
