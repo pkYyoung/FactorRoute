@@ -11,6 +11,10 @@ Task 1：已实现独立freeze/download/evaluate阶段；不修改核心、上�
 
 验证命令：`rtk proxy .venv-weekly/bin/python experiments/weekly/2026-11-09/verify_experiment.py`。
 
-离线7个测试全部通过，git diff --check通过。主代理已冻结outputs/weekly/2026-11-09/20261105-eight-way，独立参考核对8组名单全部一致，33只并集；含SPY共34个代码行情已下载完整。Task 2后续估值、独立审查与Git提交由主代理执行。
+离线7个测试全部通过，git diff --check通过。主代理已冻结outputs/weekly/2026-11-09/20261105-eight-way，独立参考核对8组名单全部一致，33只并集；含SPY共34个代码行情已下载完整。Task 2的真实估值、独立核算、审查与提交均已完成。
 
-主代理已完成真实evaluate --publish，8组指标、报告及对比图全部发布；G0毛收益-6.150449%，G1毛收益-4.377189%，G2约-0.59717%为本次最佳。7个离线测试通过，图待主代理视觉核查。绘图缓存改用运行目录下cache/matplotlib与cache/xdg（setdefault尊重用户已有配置）；未重新估值或覆盖数值结果。本周README.md已加入三阶段复现命令，必须使用新的唯一运行目录；已发布report.md保持与运行目录原稿完全一致。
+主代理已完成真实evaluate --publish，8组指标、报告及对比图全部发布；G0毛收益-6.150449%，G1毛收益-4.377189%，G2约-0.59717%为本次最佳。7个离线测试通过，图已由主代理视觉核查，日期、正负号、8组及SPY图例清晰完整。绘图缓存改用运行目录下cache/matplotlib与cache/xdg（setdefault尊重用户已有配置）；未重新估值或覆盖数值结果。本周README.md已加入三阶段复现命令，必须使用新的唯一运行目录；已发布report.md保持与运行目录原稿完全一致。
+
+最终验收：实现提交36dabeb；任务审查与最终整体审查均通过，无Critical/Important。最终审查另重验547个文件哈希全部一致。父代理独立逐股核算8组收益及独立评分名单完全一致；26个核心与原周受保护文件哈希未变；第二运行目录20261105-offline-verification完全离线复算9组指标记录（含SPY）逐字段一致。精选4文件与审计运行目录逐字节一致。
+
+审查记录位于outputs/weekly/2026-11-09/task-review.md与final-review.md。非阻断限制：估值阶段中途失败需用新运行目录恢复；清单尚未自动绑定执行代码版本，本次以实现提交36dabeb定位。原始行情留本地，不提交、不推送或合并。
