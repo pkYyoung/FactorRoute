@@ -6,12 +6,12 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-import search_two_factors as grid
-from compare_strategies import ROOT, dump, relative_peers, sha, standardize
+from . import search_two_factors as grid
+from ..strategy_comparison.run import ROOT, dump, relative_peers, sha, standardize
 from factorcode.data.factors import BetaFactor
 from factorcode.project_config import HBETA_WINDOW
-from test_downside_beta import downside_beta
-from test_subindustry_cap import RULE, weekly_summary
+from .test_downside_beta import downside_beta
+from .test_subindustry_cap import RULE, weekly_summary
 
 
 # All weights are positive on the direction indicated here.

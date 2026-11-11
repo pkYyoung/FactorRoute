@@ -8,8 +8,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from audit_free_data_range import build_coverage, pit
-import run_spy_grid as grid
+from ..data_coverage.audit import build_coverage, pit
+from ..weight_search import grid as grid
 
 
 OLD = pd.Timestamp("2026-10-30")

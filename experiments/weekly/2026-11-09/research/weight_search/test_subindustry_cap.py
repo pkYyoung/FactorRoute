@@ -6,8 +6,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-import search_two_factors as grid
-from compare_strategies import ROOT, dump, load_config, sha
+from . import search_two_factors as grid
+from ..strategy_comparison.run import ROOT, dump, load_config, sha
 
 
 RULE = grid.Rule("RSTR", 70, 10, 30, 5)

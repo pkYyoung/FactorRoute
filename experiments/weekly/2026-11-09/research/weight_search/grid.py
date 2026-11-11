@@ -8,9 +8,9 @@ from time import monotonic
 import numpy as np
 import pandas as pd
 
-from audit_free_data_range import build_coverage, summarize, pit
-import search_daily_factors as daily
-import search_two_factors as grid
+from ..data_coverage.audit import build_coverage, summarize, pit
+from . import search_daily_factors as daily
+from . import search_two_factors as grid
 
 
 START = pd.Timestamp("2023-03-17")

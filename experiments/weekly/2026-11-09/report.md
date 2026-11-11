@@ -1,6 +1,6 @@
 # FactorRoute 周报 · 2026-11-09 计划持仓周
 
-本周信号取 11 月 6 日美股收盘数据。拟于 11 月 10 日执行第 6 名策略的名单，实际成交和账户净值另行记录。
+信号日和行情截止日均为 2026-11-06（美股收盘）。第 6 名策略的计划执行日为 2026-11-10，实际成交和账户净值另行记录。
 
 ## 本周更新
 
@@ -12,7 +12,7 @@
 
 第 6 名按当周合格股票的指标标准分加权，使用 **20% 原动量 RSTR、55% Alpha、15% 低残差波动、5% 低市场 Beta、5% 同行业 21 日相对动量**。每周末选 10 只等权股票，仍合格且排前 15 名的老仓在行业名额内优先保留，调仓时同一行业最多 3 只。
 
-11 月 6 日信号从前一周的 70/30 归档名单出发，保留 4 只、替换 6 只。能源和医疗各占目标组合 30%。完整目标见本地 `outputs/weekly/2026-11-09/nov10-selected/selected.csv`。
+11 月 6 日信号从前一周的 70/30 归档名单出发，保留 4 只、替换 6 只。能源和医疗各占目标组合 30%。完整目标见[本周精选名单](selected.csv)。
 
 ## 回测与验证
 
@@ -30,4 +30,46 @@
 
 ## 复现
 
-按 [实验入口](README.md) 使用本地冻结行情和成员表。覆盖率和前 20 名完整结果见本地 `free-data-audit/` 和 `spy-grid-wide/`。八组对照原报告见本地 `archive/eight-way-report.md`。目录均位于 `outputs/weekly/2026-11-09/`。
+在仓库根目录使用 `.venv-weekly`。冻结行情和过程产物位于本地 `outputs/weekly/2026-11-09/`，以下命令使用独立输出目录。
+
+### 八组对照
+
+[冻结配置](research/strategy_comparison/config.json) · [名单](research/strategy_comparison/selected.csv) · [指标](research/strategy_comparison/metrics.json) · [净值图](research/strategy_comparison/equity.png)
+
+每次换一个尚不存在的运行目录。历史运行在本地 `20261105-eight-way/`，原实验报告在 `archive/eight-way-report.md`。复现默认写入运行目录，`--publish` 会拒绝覆盖已归档文件。
+
+```sh
+module=experiments.weekly.2026-11-09.research
+out=outputs/weekly/2026-11-09/reproduce-eight-way
+rtk proxy .venv-weekly/bin/python -m "$module.strategy_comparison.verify"
+rtk proxy .venv-weekly/bin/python -m "$module.strategy_comparison.run" freeze --run-dir "$out"
+rtk proxy .venv-weekly/bin/python -m "$module.strategy_comparison.run" download --run-dir "$out"
+rtk proxy .venv-weekly/bin/python -m "$module.strategy_comparison.run" evaluate --run-dir "$out"
+```
+
+### 动态成分股验收与权重搜索
+
+动态成员入口读取 `free-pit-pilot/` 的历史成员、身份映射和补价。补价入口生成 `yahoo/`，覆盖验收读取该目录并在同一运行目录写出覆盖表。离线验收可先复制冻结的 `free-data-audit/yahoo/` 到新目录。
+
+全量权重搜索读取冻结的 `free-data-audit/` 和 `data/yfinance/extended_2015_to_20261030/`。冻结榜单见本地 `spy-grid-wide/frozen_top20.csv`。全量任务可在同一运行目录按原命令续跑，小批量验收需用独立目录并加 `--limit 12 --workers 2 --part-size 6`。
+
+```sh
+module=experiments.weekly.2026-11-09.research
+base=outputs/weekly/2026-11-09
+rtk proxy .venv-weekly/bin/python -m "$module.data_coverage.run" --out "$base/reproduce-members"
+rtk proxy .venv-weekly/bin/python -m "$module.data_coverage.download" "$base/reproduce-coverage"
+rtk proxy .venv-weekly/bin/python -m "$module.data_coverage.audit" "$base/reproduce-coverage"
+rtk proxy .venv-weekly/bin/python -m "$module.weight_search.run" "$base/reproduce-wide"
+```
+
+### 11 月 6 日名单
+
+入口读取 `spy-grid-wide/` 的冻结权重，以及 `spy-candidate-pilot/` 和 `capped-buffer-week-review/` 的旧名单。离线复算使用原报价快照，先把本地 `nov06-strategy-comparison/` 的 `week_quotes.csv`、`okta.csv` 和 `download.json` 复制到新目录，再运行 `compare`。重新下载时在新目录先运行同一入口的 `download` 子命令。
+
+```sh
+module=experiments.weekly.2026-11-09.research
+out=outputs/weekly/2026-11-09/reproduce-nov06
+rtk proxy .venv-weekly/bin/python -m "$module.weekly_selection.run" compare "$out"
+```
+
+在输出 `comparison_lists.csv` 中取信号日为 2026-11-06、配方为 `rank_06_switch_from_baseline` 的行。按 `score_rank` 升序与精选名单对照，10 只股票各 10%。精选名单中的 `rank` 保留缓冲选股前的全池评分排名。

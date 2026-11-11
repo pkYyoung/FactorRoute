@@ -1,6 +1,6 @@
 # FactorRoute周报：2026-11-02计划持仓周
 
-报告日期：2026-11-01；信号与行情截止：2026-10-30美股收盘。状态为模拟研究候选，尚未真实执行，不报告账户实际收益。
+报告日期：2026-11-01；信号与行情截止：2026-10-30美股收盘。计划执行日为 2026-11-02 开盘。状态为模拟研究候选，尚未真实执行，不报告账户实际收益。
 
 ## 本周更新了什么
 
@@ -84,7 +84,7 @@
 参数见[config.json](config.json)，结果见[selected.csv](selected.csv)及[metrics.json](metrics.json)。按根README安装后，在仓库根目录执行：
 
 ```bash
-python scripts/run_weekly.py --config experiments/weekly/2026-11-02/config.json --stage research --open-chart
+rtk proxy .venv-weekly/bin/python scripts/run_weekly.py --config experiments/weekly/2026-11-02/config.json --stage research
 ```
 
 没有本地快照则改为`--stage all`；供应商重新下载会修订，数值不一定逐点相同。公开仓库不包含完整行情、账户金额、参考股数或下单预算。程序只研究，不下单。

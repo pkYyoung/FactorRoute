@@ -7,7 +7,7 @@ import argparse
 import numpy as np
 import pandas as pd
 
-from compare_strategies import HERE, ROOT, dump, load_config, relative_peers, sha, standardize
+from ..strategy_comparison.run import HERE, ROOT, dump, load_config, relative_peers, sha, standardize
 
 
 @dataclass(frozen=True)
@@ -43,8 +43,8 @@ def inputs():
     if list(expected[expected >= ranks.date.min()]) != sorted(ranks.date.unique()):
         raise ValueError("Missing or unexpected archived signal dates")
     codes = sorted(set(ranks.code) | {"SPY"})
-    files = [ranks_path, cal_path, HERE / "experiment_config.json",
-             HERE / "compare_strategies.py", Path(__file__).resolve()]
+    files = [ranks_path, cal_path, HERE / "config.json",
+             HERE / "run.py", Path(__file__).resolve()]
     frames = {}
     for code in codes:
         path = root / "raw" / f"{code}.csv"

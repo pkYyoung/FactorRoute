@@ -6,9 +6,9 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-import search_two_factors as grid
-from compare_strategies import ROOT, dump, sha
-from test_subindustry_cap import RULE, weekly_summary
+from . import search_two_factors as grid
+from ..strategy_comparison.run import ROOT, dump, sha
+from .test_subindustry_cap import RULE, weekly_summary
 
 
 LOOKBACK = 126

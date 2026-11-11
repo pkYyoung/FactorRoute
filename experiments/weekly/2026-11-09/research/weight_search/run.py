@@ -13,7 +13,7 @@ from time import monotonic
 import numpy as np
 import pandas as pd
 
-import run_spy_grid as grid
+from . import grid as grid
 
 
 NAMES = grid.NAMES

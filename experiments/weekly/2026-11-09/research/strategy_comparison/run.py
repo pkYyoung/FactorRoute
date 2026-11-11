@@ -10,7 +10,8 @@ import numpy as np
 import pandas as pd
 
 HERE=Path(__file__).resolve().parent
-ROOT=HERE.parents[2]
+WEEK=HERE.parents[1]
+ROOT=WEEK.parents[2]
 
 def dump(path,value):
     Path(path).write_text(json.dumps(value,ensure_ascii=False,indent=2,allow_nan=False)+"\n")
@@ -19,7 +20,7 @@ def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 def load_config():
-    cfg=json.loads((HERE/"experiment_config.json").read_text())
+    cfg=json.loads((HERE/"config.json").read_text())
     fixed={"recent_window":21,"medium_window":63,"old_weights":[.7,-.3],"new_weights":[.4,.3,-.3]}
     for key,value in fixed.items():
         if cfg.get(key)!=value:raise ValueError(f"This approved experiment requires {key}={value}")
@@ -80,7 +81,7 @@ def freeze(run):
     if run.exists():raise FileExistsError(f"Run already exists: {run}")
     run.mkdir(parents=True)
     try:
-        pool=read_pool(cfg);prices={};inputs=[ROOT/cfg["rankings"],ROOT/cfg["baseline"],HERE/"experiment_config.json",ROOT/cfg["snapshot"]/"universe.csv",ROOT/cfg["snapshot"]/"manifest.json"]
+        pool=read_pool(cfg);prices={};inputs=[ROOT/cfg["rankings"],ROOT/cfg["baseline"],HERE/"config.json",ROOT/cfg["snapshot"]/"universe.csv",ROOT/cfg["snapshot"]/"manifest.json"]
         calendar_path=ROOT/cfg["snapshot"]/"calendar_XNYS.csv"
         inputs.append(calendar_path)
         calendar=pd.read_csv(calendar_path)
@@ -166,8 +167,13 @@ def max_drawdown(nav):
 def evaluate(run,publish=False):
     cfg=verify_freeze(run)
     if (run/"metrics.json").exists():raise FileExistsError("Evaluation already exists")
-    names=["report.md","metrics.json","selected.csv","comparison.png"]
-    if publish and any((HERE/n).exists() for n in names):raise FileExistsError("Published artifacts already exist")
+    destinations = {
+        "report.md": WEEK / "report.md",
+        "metrics.json": HERE / "metrics.json",
+        "selected.csv": HERE / "selected.csv",
+        "equity.png": HERE / "equity.png",
+    }
+    if publish and any(path.exists() for path in destinations.values()):raise FileExistsError("Published artifacts already exist")
     dm=json.loads((run/"download_manifest.json").read_text())
     if dm["freeze_manifest_sha256"]!=sha(run/"freeze_manifest.json"):raise ValueError("Download freeze mismatch")
     for name,digest in dm["files"].items():
@@ -214,7 +220,7 @@ def evaluate(run,publish=False):
         axes[1].plot(["Initial"]+cfg["valuation_dates"],[1]+navs[k+" net"].tolist(),marker="o",label=k)
     axes[1].tick_params(axis="x",rotation=25);axes[1].set_ylabel("Net NAV");axes[1].legend(ncol=3)
     fig.suptitle("Eight strategies: Nov 2 open to Nov 4 close, 2026")
-    fig.tight_layout();fig.savefig(run/"comparison.png",dpi=160);plt.close(fig)
+    fig.tight_layout();fig.savefig(run/"equity.png",dpi=160);plt.close(fig)
     pct=lambda x:f"{100*x:.3f}%"
     rows=["# 10月30日选股：8组对照研究","", "信号日2026-10-30，11月2日调整开盘买入，持有至11月4日调整收盘。各组买入后持有，股票内部等权，使用分数股。", "", "这是看过行情后的三天诊断，不能确定三个月比赛的最优策略；未自动修改正式策略。", "", "|组别|评分|只数|行业上限|毛收益|净收益|相对SPY毛收益差|比G0改善|净值收盘最大回撤|上涨数|", "|---|---|---:|---|---:|---:|---:|---:|---:|---:|"]
     for g in cfg["groups"]:
@@ -231,12 +237,16 @@ def evaluate(run,publish=False):
     for g in cfg["groups"]:
         s=selected[selected.group==g["id"]]
         rows += [f"## {g['id']}名单与行业分配", "", "、".join(s.code), "", "；".join(f"{r['sector']} {pct(r['target_weight'])}，收益贡献{100*r['gross_contribution']:+.3f}个百分点" for r in sectors if r['group']==g['id']), ""]
-    rows += ["## 口径与限制", "", "原策略为70%原动量减30%波动标准分。新策略为40%相对同行的1个月动量、30%3个月绝对动量、减30%原波动标准分；同行为原资格池同GICS行业的其他公司。两个动量窗口重叠。行业上限只约束期初目标，不触发再平衡。", "", "净收益统一假设从现金新建仓，买入费10bps，投入本金1/1.001，期末不卖出。收盘最大回撤包含初始本金1，仅代表三次收盘观察，不包含盘中回撤；不年化。逐股收益及组合贡献见运行目录stock_contributions.csv。", "", "资格池沿用11月1日供应商快照和原资格过滤，公司名单不是严格逐日历史名单。选股输入截断于10月30日；估值行情在冻结名单后统一重新下载，供应商可能修订历史复权价格。G0与原名单、顺序、权重和评分已核对，约-6.15%毛收益仅作为先前复盘参考，差异不强行校准。", "", f"完整审计与来源：`{run.relative_to(ROOT)}/freeze_manifest.json`、`download_manifest.json`、`evaluation_manifest.json`。", "", "![8组收益和净值](comparison.png)", ""]
+    rows += ["## 口径与限制", "", "原策略为70%原动量减30%波动标准分。新策略为40%相对同行的1个月动量、30%3个月绝对动量、减30%原波动标准分；同行为原资格池同GICS行业的其他公司。两个动量窗口重叠。行业上限只约束期初目标，不触发再平衡。", "", "净收益统一假设从现金新建仓，买入费10bps，投入本金1/1.001，期末不卖出。收盘最大回撤包含初始本金1，仅代表三次收盘观察，不包含盘中回撤；不年化。逐股收益及组合贡献见运行目录stock_contributions.csv。", "", "资格池沿用11月1日供应商快照和原资格过滤，公司名单不是严格逐日历史名单。选股输入截断于10月30日；估值行情在冻结名单后统一重新下载，供应商可能修订历史复权价格。G0与原名单、顺序、权重和评分已核对，约-6.15%毛收益仅作为先前复盘参考，差异不强行校准。", "", f"完整审计与来源：`{run.relative_to(ROOT)}/freeze_manifest.json`、`download_manifest.json`、`evaluation_manifest.json`。", "", "![8组收益和净值](equity.png)", ""]
     (run/"report.md").write_text("\n".join(rows))
-    dump(run/"evaluation_manifest.json",{"created_utc":datetime.now(timezone.utc).isoformat(),"freeze_manifest_sha256":sha(run/"freeze_manifest.json"),"download_manifest_sha256":sha(run/"download_manifest.json"),"artifacts":{n:sha(run/n) for n in names+["daily_nav.csv","stock_contributions.csv","sector_contributions.csv"]}})
+    dump(run/"evaluation_manifest.json",{"created_utc":datetime.now(timezone.utc).isoformat(),"freeze_manifest_sha256":sha(run/"freeze_manifest.json"),"download_manifest_sha256":sha(run/"download_manifest.json"),"artifacts":{n:sha(run/n) for n in [*destinations, "daily_nav.csv","stock_contributions.csv","sector_contributions.csv"]}})
     if publish:
         import shutil
-        for n in names:shutil.copyfile(run/n,HERE/n)
+        for name, target in destinations.items():
+            if name == "report.md":
+                target.write_text((run / name).read_text().replace("(equity.png)", "(research/strategy_comparison/equity.png)"))
+            else:
+                shutil.copyfile(run / name, target)
     print(pd.DataFrame(metrics).T.to_string());print(run/"report.md")
 
 def main():

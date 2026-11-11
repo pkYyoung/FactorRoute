@@ -6,13 +6,13 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-import search_two_factors as grid
-from compare_strategies import HERE, ROOT, dump, sha, standardize
+from . import search_two_factors as grid
+from ..strategy_comparison.run import WEEK, ROOT, dump, sha, standardize
 from factorcode.data.factors import BetaFactor, MomentumFactor, ResidualVolatilityFactor
 from factorcode.data.yfinance_source import load_snapshot
 from factorcode.project_config import DASTD_WINDOW, HBETA_WINDOW, RSTR_WINDOW
 from factorcode.strategy.weekly import rank_universe
-from test_subindustry_cap import RULE, weekly_summary
+from .test_subindustry_cap import RULE, weekly_summary
 
 
 RECIPES = {
@@ -60,7 +60,7 @@ def weekly_raw(market):
 
 
 def prepare(snapshot, start):
-    cfg_path = HERE.parent / "2026-11-02" / "config.json"
+    cfg_path = WEEK.parent / "2026-11-02" / "config.json"
     cfg = json.loads(cfg_path.read_text())
     cfg["analysis_start"] = start
     market = load_snapshot(snapshot, cfg["signal_date"])
@@ -121,7 +121,7 @@ def main(snapshot, out):
         "max": int(ranks.groupby("date").size().max())},
         "strategies": summary})
     files = [Path(__file__).resolve(), Path(grid.__file__).resolve(),
-             HERE.parent / "2026-11-02" / "config.json", snapshot / "manifest.json",
+             WEEK.parent / "2026-11-02" / "config.json", snapshot / "manifest.json",
              snapshot / "universe.csv"]
     dump(out / "input_sha256.json", {str(p.relative_to(ROOT)): sha(p) for p in files})
     for name, x in summary.items():

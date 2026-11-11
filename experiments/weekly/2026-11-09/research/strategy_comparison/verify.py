@@ -2,7 +2,7 @@
 import unittest
 import numpy as np
 import pandas as pd
-import compare_strategies as c
+from . import run as c
 
 class ExperimentTests(unittest.TestCase):
     def test_windows_future_and_peers(self):

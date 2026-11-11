@@ -8,7 +8,7 @@ import re
 import numpy as np
 import pandas as pd
 
-import free_dynamic_pool as pit
+from . import run as pit
 
 
 FIRST = "2021-01-01"

@@ -7,12 +7,12 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-import search_two_factors as grid
-from compare_strategies import ROOT, dump, sha, standardize
-from extend_price_history import RECIPES
+from ..weight_search import search_two_factors as grid
+from ..strategy_comparison.run import ROOT, dump, sha, standardize
+from ..weight_search.extend_price_history import RECIPES
 from factorcode.data.factors import BetaFactor, MomentumFactor, ResidualVolatilityFactor
 from factorcode.data.yfinance_source import load_snapshot
-from test_subindustry_cap import RULE
+from ..weight_search.test_subindustry_cap import RULE
 
 
 INPUT = ROOT / "outputs/weekly/2026-11-09/free-pit-pilot"

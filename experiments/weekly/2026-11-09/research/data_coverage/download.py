@@ -6,11 +6,12 @@ from datetime import datetime, timezone
 import json
 from pathlib import Path
 
+from ..strategy_comparison.run import ROOT
+
 import pandas as pd
 import yfinance as yf
 
 
-ROOT = Path(__file__).resolve().parents[3]
 PILOT = ROOT / "outputs/weekly/2026-11-09/free-pit-pilot"
 FIRST = "2021-01-01"
 
