@@ -1,0 +1,11 @@
+date,code,company,sector,score,rank,target_weight,status
+2026-11-13,CRL,Charles River Laboratories,Health Care,1.6688402696646187,1,0.1,retained
+2026-11-13,MPC,Marathon Petroleum,Energy,1.5759093711265635,2,0.1,retained
+2026-11-13,APA,APA Corporation,Energy,1.5750961958654175,3,0.1,retained
+2026-11-13,MRNA,Moderna,Health Care,1.4361257495936548,5,0.1,retained
+2026-11-13,PSX,Phillips 66,Energy,1.4129454723988,7,0.1,retained
+2026-11-13,CBOE,Cboe Global Markets,Financials,1.3921363078256994,8,0.1,added
+2026-11-13,HAS,Hasbro,Consumer Discretionary,1.3832976296899446,9,0.1,retained
+2026-11-13,ACN,Accenture,Information Technology,1.2850595125080355,12,0.1,retained
+2026-11-13,OKTA,Okta,Information Technology,1.2715177302898535,13,0.1,added
+2026-11-13,RVTY,Revvity,Health Care,1.2136565989112267,15,0.1,retained

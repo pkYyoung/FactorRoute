@@ -6,7 +6,8 @@
 
 ## 本周更新与团队入口
 
-- [本周研究：2026-11-02](experiments/weekly/2026-11-02/report.md)：70%动量／30%低波动、10家公司及选择依据。
+- [最新归档研究：2026-11-16](experiments/weekly/2026-11-16/report.md)：沿用 Alpha 55，10 家等权；保留 8 家、新进 2 家。
+- [最新归档选股名单](experiments/weekly/2026-11-16/selected.csv)：2026-11-13 收盘信号，包含评分、排名和变动状态。
 - [每周研究索引与操作流程](experiments/weekly/README.md)：参数、报告和精选结果按周归档，共用代码不按周复制。
 - [数据源审计](docs/yfinance-audit.md)：已验证能力、价格口径及限制。
 
